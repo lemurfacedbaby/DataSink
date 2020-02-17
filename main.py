@@ -21,22 +21,23 @@ from kafka import KafkaProducer
 
 topics = ['topic_0', 'topic_1']
 
-def produceMessage(a):
-	producer.send(topic, a.encode())
+def produceMessage(a, p, t):
+	p.send(t, a.encode())
 
 if __name__ == "__main__":
 	url = 'http://localhost:9000'
 	if (len(sys.argv) != 1):
 		url = sys.argv[1]
 	# Connect to MinIO
-	s3 = boto3.resource('s3',
-						endpoint_url=url,
-						aws_access_key_id='minioadmin',
-						aws_secret_access_key='minioadmin',
-						config=Config(signature_version='s3v4'),
-                    	region_name='us-east-1')
-	s3.Bucket('test').download_file('mock.txt', '/Users/bgcooper/code/CSC492/DataSink/boi.txt')
+	#s3 = boto3.resource('s3',
+						#endpoint_url=url,
+						#aws_access_key_id='minioadmin',
+						#aws_secret_access_key='minioadmin',
+						#config=Config(signature_version='s3v4'),
+                    	#region_name='us-east-1')
+	#s3.Bucket('test').download_file('mock.txt', '/Users/bgcooper/code/CSC492/DataSink/boi.txt')
 	## value serializer determines how to convert data put in producer.send into a byte array
 	producer = KafkaProducer(bootstrap_servers='localhost:9092')
 	metric = producer.metrics()
+	produceMessage('Hello world', producer, topics[0])
 	print(metric)
