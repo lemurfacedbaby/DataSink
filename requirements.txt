@@ -1,5 +1,5 @@
 altgraph==0.10.2
-ansible==2.8.3
+ansible==2.8.8
 asn1crypto==0.24.0
 backports.functools-lru-cache==1.6.1
 bdist-mpkg==0.5.0
