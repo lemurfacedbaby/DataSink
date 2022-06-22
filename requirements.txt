@@ -24,7 +24,7 @@ matplotlib==2.2.5
 mido==1.2.8
 modulegraph==0.10.4
 mpmath==1.1.0
-numpy==1.16.6
+numpy==1.22.0
 py2app==0.7.3
 pycparser==2.19
 pyobjc-core==2.5.1
